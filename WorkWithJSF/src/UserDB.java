@@ -3,13 +3,13 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-import model.Users;
+import model.User1;
 
 
 
 public class UserDB {
 
-    public static void insert(Users user) {
+    public static void insert(User1 user) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();        
@@ -24,7 +24,7 @@ public class UserDB {
         }
     }
 
-    public static void update(Users user) {
+    public static void update(User1 user) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();       
@@ -39,7 +39,7 @@ public class UserDB {
         }
     }
 
-    public static void delete(Users user) {
+    public static void delete(User1 user) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();        
@@ -54,14 +54,14 @@ public class UserDB {
         }       
     }
 
-    public static Users selectUser(String email) {
+    public static User1 selectUser(String email) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT u FROM Users u " +
+        String qString = "SELECT u FROM User1 u " +
                 "WHERE u.email = :email";
-        TypedQuery<Users> q = em.createQuery(qString, Users.class);
+        TypedQuery<User1> q = em.createQuery(qString, User1.class);
         q.setParameter("email", email);
         try {
-            Users user = q.getSingleResult();
+            User1 user = q.getSingleResult();
             return user;
         } catch (NoResultException e) {
             return null;
@@ -71,7 +71,7 @@ public class UserDB {
     }
 
     public static boolean emailExists(String email) {
-        Users u = selectUser(email);   
+        User1 u = selectUser(email);   
         return u != null;
     }
 }

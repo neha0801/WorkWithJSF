@@ -2,12 +2,12 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import model.Users;
+import model.User1;
 
 @ManagedBean
 @RequestScoped
 public class EmailList {
-    private Users user;
+    private User1 user;
     private String message;
     
     public EmailList() {
@@ -15,7 +15,7 @@ public class EmailList {
     
     @PostConstruct
     public void init() {
-        user = new Users();
+        user = new User1();
     }
     
     public String addToEmailList() {
@@ -30,11 +30,11 @@ public class EmailList {
         }
     }
 
-    public Users getUser() {
+    public User1 getUser() {
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(User1 user) {
         this.user = user;
     }
 
